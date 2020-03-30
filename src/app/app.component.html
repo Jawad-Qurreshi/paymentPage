@@ -41,24 +41,27 @@
         });
       </script>
       <div class="sap_tabs">
-        <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+        {{ radioValue }}
+        <div id="horizontalTab" 
+        style="display: block; width: 100%; margin: 0px;">
           <div class="pay-tabs">
             <h2>Select Payment Method</h2>
+            <nz-radio-group [(ngModel)]="radioValue">
             <ul class="resp-tabs-list">
-              <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span><label class="pic1"></label>Credit
+              <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span><label nz-radio nzValue="CreditCard" class="pic1"></label>Credit
                   Card</span></li>
-              <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span><label class="pic3"></label>Net
+              <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span><label nz-radio nzValue="NetBanking" class="pic3"></label>Net
                   Banking</span></li>
-              <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span><label
-                    class="pic4"></label>PayPal</span>
+              <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span><label nz-radio nzValue="Paypal" class="pic4"></label>PayPal</span>
               </li>
-              <li class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span><label class="pic2"></label>Debit
+              <li class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span><label nz-radio nzValue="DebitCard" class="pic2"></label>Debit
                   Card</span></li>
               <div class="clear"></div>
             </ul>
+          </nz-radio-group>
           </div>
           <div class="resp-tabs-container">
-            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0" *ngIf="radioValue === 'CreditCard'">
               <div class="payment-info">
                 <h3>Personal Information</h3>
                 <form>
@@ -112,7 +115,7 @@
                 </div>
               </div>
             </div>
-            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1"  *ngIf="radioValue === 'NetBanking'">
               <div class="payment-info">
                 <h3>Net Banking</h3>
                 <div class="radio-btns">
@@ -218,7 +221,7 @@
                 <a href="#">Continue</a>
               </div>
             </div>
-            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2" *ngIf="radioValue === 'Paypal'">
               <div class="payment-info">
                 <h3>PayPal</h3>
                 <h4>Already Have A PayPal Account?</h4>
@@ -252,7 +255,7 @@
                 </div>
               </div>
             </div>
-            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
+            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3" *ngIf="radioValue === 'DebitCard'">
               <div class="payment-info">
 
                 <h3 class="pay-title">Dedit Card Info</h3>
