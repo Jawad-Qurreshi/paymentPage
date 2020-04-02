@@ -11,6 +11,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
+app.post('/card/credit', (req, res) => {
 
+});
+
+app.post('/card/debit', (req, res) => {
+
+});
+
+app.post('/paypal', (req, res) => {
+
+});
+
+app.post('/banking/intenet', (req, res) => {
+
+});
 
 module.exports = app;
