@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import en from '@angular/common/locales/en';
 import { registerLocaleData } from '@angular/common';
@@ -18,7 +18,7 @@ registerLocaleData(en);
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    Approutes,
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
