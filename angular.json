@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "payment-save"
+    }
+  },
+  "defaultProject": "payment-save",
+  "cli": {
+    "analytics": false
+  }
 }
