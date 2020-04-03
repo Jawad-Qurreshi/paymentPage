@@ -15,9 +15,9 @@ export const DashboardRoutes: Routes = [
           title: "Admin Dashboard",
           urls: [
             { title: "AdminDashboard", url: "/dashboard" },
-            { title: "Dashboard 1" }
-          ]
-        }
+            { title: "Dashboard 1" },
+          ],
+        },
       },
       {
         path: "dashboard2",
@@ -26,16 +26,20 @@ export const DashboardRoutes: Routes = [
           title: "user Dashboard",
           urls: [
             { title: "UserDashboard", url: "/dashboard" },
-            { title: "Dashboard 2" }
-          ]
-        }
-      }
-    ]
-  }
+            { title: "Dashboard 2" },
+          ],
+        },
+      },
+    ],
+  },
+  {
+    path: "",
+    redirectTo: "dashboard1",
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(DashboardRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
