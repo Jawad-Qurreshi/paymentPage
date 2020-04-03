@@ -9,12 +9,16 @@ const app = express();
 app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 //Models
 const CreditCardPayment = require('./models/creditcard-payment-model');
 const DebitCardPayment = require('./models/debitcard-payment-model');
 const PaypalPayment = require('./models/paypal-payment-model');
+
+//Database
+const db = require('./database');
+
+db.connect();
 
 
 app.post('/card/credit', (req, res) => {
@@ -24,8 +28,18 @@ app.post('/card/credit', (req, res) => {
         name: body.name,
         cardName: body.cardName,
         expiration: body.expiration,
-        cvv: body.cvv
+        cvv: body.cvv,
+        cardNumber: body.cardNumber,
+        type: ''
     });
+    const digit = creditPayment.cardNumber.split('')[0];
+    console.log(digit);
+    if (digit === '5')
+        creditPayment.type = 'Master'
+    else if (digit === '4')
+        creditPayment.type = 'Visa'
+    else
+        creditPayment.type = 'Others'
 
     creditPayment.save()
         .then(stored => {
@@ -34,6 +48,7 @@ app.post('/card/credit', (req, res) => {
             });
         })
         .catch(err => {
+            console.log(err);
             res.status(500).json({
                 isSuccess: false,
                 message: 'INTERNAL_ERROR'
@@ -46,8 +61,18 @@ app.post('/card/debit', (req, res) => {
     const debitPayment = new DebitCardPayment({
         cardName: body.cardName,
         expiration: body.expiration,
-        cvv: body.cvv
+        cvv: body.cvv,
+        cardNumber: body.cardNumber,
+        type: ''
     });
+    const digit = debitPayment.cardNumber.split('')[0];
+    console.log(digit);
+    if (digit === '5')
+        debitPayment.type = 'Master'
+    else if (digit === '4')
+        debitPayment.type = 'Visa'
+    else
+        debitPayment.type = 'Others'
     debitPayment.save()
         .then(stored => {
             res.status(201).json({
@@ -55,6 +80,7 @@ app.post('/card/debit', (req, res) => {
             });
         })
         .catch(err => {
+            console.log(err)
             res.status(500).json({
                 isSuccess: false,
                 message: 'INTERNAL_ERROR'
