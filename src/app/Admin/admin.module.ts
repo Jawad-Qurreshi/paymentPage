@@ -9,7 +9,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { Dashboard1Component } from "./dashboard1/dashboard.component";
 import { DashboardRoutes } from "./admin.routing";
-import { FormsModule } from "@angular/forms";
+import { FormsModule , ReactiveFormsModule} from "@angular/forms";
 import { Ng2SmartTableModule } from "ng2-smart-table";
 import { NgModule } from "@angular/core";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
@@ -30,6 +30,7 @@ registerLocaleData(en);
     RouterModule.forChild(DashboardRoutes),
     PerfectScrollbarModule,
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     NgxDatatableModule,
     NgZorroAntdModule,

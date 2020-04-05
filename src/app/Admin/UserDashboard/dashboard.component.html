@@ -37,7 +37,6 @@
                 });
             </script>
             <div class="sap_tabs">
-                {{ radioValue }}
                 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
                     <div class="pay-tabs">
                         <h2>Select Payment Method</h2>
@@ -59,241 +58,163 @@
                         <div class="tab-1 " aria-labelledby="tab_item-0" *ngIf="radioValue === 'CreditCard'">
                             <div class="payment-info">
                                 <h3>Personal Information</h3>
-                                <form>
+                                <form [formGroup]="creditData">
                                     <div class="tab-for">
                                         <h5>EMAIL ADDRESS</h5>
-                                        <input type="text" value="">
+                                        <input formControlName="creditEmail" type=" text " value=" ">
                                         <h5>FIRST NAME</h5>
-                                        <input type="text" value="">
+                                        <input formControlName="creditName" type="text " value=" ">
                                     </div>
                                 </form>
-                                <h3 class="pay-title">Credit Card Info</h3>
-                                <form>
-                                    <div class="tab-for">
+                                <h3 class="pay-title ">Credit Card Info</h3>
+                                <form [formGroup]="creditOther">
+                                    <div class=" tab-for ">
                                         <h5>NAME ON CARD</h5>
-                                        <input type="text" value="">
+                                        <input type="text " formControlName="creditNameOnCard" value=" ">
                                         <h5>CARD NUMBER</h5>
-                                        <input class="pay-logo" type="text" value="0000-0000-0000-0000" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="">
+                                        <input formControlName="creditCardNumber" class="pay-logo " type="text " value="0000-0000-0000-0000 " onfocus="this.value='' ; " onblur="if (this.value=='' ) {this.value='0000-0000-0000-0000' ;}
+                                            " required=" ">
                                     </div>
-                                    <div class="transaction">
-                                        <div class="tab-form-left user-form">
+                                    <div class="transaction ">
+                                        <div class="tab-form-left user-form ">
                                             <h5>EXPIRATION</h5>
                                             <ul>
                                                 <li>
-                                                    <input type="number" class="text_box" type="text" value="6" min="1" />
+                                                    <input type="number " formControlName="creditmonth" class="text_box " type="text " value="6 " min="1 " />
                                                 </li>
                                                 <li>
-                                                    <input type="number" class="text_box" type="text" value="1988" min="1" />
+                                                    <input type="number " formControlName="creditYear" class="text_box " type="text " value="1988 " min="1 " />
                                                 </li>
 
                                             </ul>
                                         </div>
-                                        <div class="tab-form-right user-form-rt">
+                                        <div class="tab-form-right user-form-rt ">
                                             <h5>CVV NUMBER</h5>
-                                            <input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="">
+                                            <input type="text " value="xxxx " formControlName="creditCVV" onfocus="this.value='' ; " onblur="if (this.value=='' ) {this.value='xxxx' ;} " required=" ">
                                         </div>
-                                        <div class="clear"></div>
+                                        <div class="clear "></div>
                                     </div>
-                                    <input type="submit" value="SUBMIT">
+
+                                    <input type="checkbox" [(ngModel)]="checkCredit" [ngModelOptions]="{standalone: true}" />
+                                    <label class="label_sub">By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
+                                    <br>
+                                    <button class='btn_submit' [disabled]="creditOther.invalid " onclick="creditSub()" type="submit " value="SUBMIT ">Submit</button>
+                                   
                                 </form>
-                                <div class="single-bottom">
-                                    <ul>
-                                        <li>
-                                            <input type="checkbox" id="brand" value="">
-                                            <label for="brand"><span></span>By checking this box, I agree to the Terms &
-                          Conditions
-                          & Privacy Policy.</label>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
-                        <div class="tab-1 " aria-labelledby="tab_item-1" *ngIf="radioValue === 'NetBanking'">
-                            <div class="payment-info">
+                        <div class="tab-1 " aria-labelledby="tab_item-1 " *ngIf="radioValue==='NetBanking' ">
+                            <div class="payment-info ">
                                 <h3>Direct Banking</h3>
-                                <div class="radio-btns">
-                                    <div class="swit">
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio" checked=""><i></i>Andhra
-                            Bank</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Allahabad
-                            Bank</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Bank of
-                            Baroda</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Canara
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>IDBI
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Icici
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Indian
-                            Overseas
-                            Bank</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Punjab
-                            National
-                            Bank</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>South
-                            Indian
-                            Bank</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>State
-                            Bank Of
-                            India</label> </div>
-                                        </div>
+                                <div class="radio-btns ">
+                                    <div class="swit ">
+
                                     </div>
-                                    <div class="swit">
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio" checked=""><i></i>City Union
-                            Bank</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>HDFC
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>IndusInd
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Syndicate
-                            Bank</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Deutsche
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Corporation
-                            Bank</label> </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>UCO
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Indian
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>Federal
-                            Bank</label>
-                                            </div>
-                                        </div>
-                                        <div class="check_box">
-                                            <div class="radio"> <label><input type="radio" name="radio"><i></i>ING Vysya
-                            Bank</label> </div>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
                                 </div>
-                                <a href="#">Continue</a>
+                                <div class="check_box ">
+                                    <div class="radio "> <label><input type="radio " name="radio "><i></i>Syndicate
+                            Bank</label> </div>
+                                </div>
+                                <div class="check_box ">
+                                    <div class="radio "> <label><input type="radio " name="radio "><i></i>Deutsche
+                            Bank</label>
+                                    </div>
+                                </div>
+                                <div class="check_box ">
+                                    <div class="radio "> <label><input type="radio " name="radio "><i></i>Corporation
+                            Bank</label> </div>
+                                </div>
+                                <div class="check_box ">
+                                    <div class="radio "> <label><input type="radio " name="radio "><i></i>UCO
+                            Bank</label>
+                                    </div>
+                                </div>
+                                <div class="check_box ">
+                                    <div class="radio "> <label><input type="radio " name="radio "><i></i>Indian
+                            Bank</label>
+                                    </div>
+                                </div>
+                                <div class="check_box ">
+                                    <div class="radio "> <label><input type="radio " name="radio "><i></i>Federal
+                            Bank</label>
+                                    </div>
+                                </div>
+                                <div class="check_box ">
+                                    <div class="radio "> <label><input type="radio " name="radio "><i></i>ING Vysya
+                            Bank</label> </div>
+                                </div>
                             </div>
+                            <div class="clear "></div>
                         </div>
-                        <div class="tab-1" aria-labelledby="tab_item-2" *ngIf="radioValue === 'Paypal'">
-                            <div class="payment-info">
+                        <!-- <a href="# ">Continue</a> -->
+
+                        <div class="tab-1 " aria-labelledby="tab_item-2 " *ngIf="radioValue==='Paypal' ">
+                            <div class="payment-info ">
                                 <h3>PayPal</h3>
-                                <h4>Already Have A PayPal Account?</h4>
-                                <div class="login-tab">
-                                    <div class="user-login">
+                                <h4>If Already Have An PayPal Account?</h4>
+                                <div class="login-tab ">
+                                    <div class="user-login ">
                                         <h2>Login</h2>
 
-                                        <form>
-                                            <input type="text" value="name@email.com" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'name@email.com';}" required="">
-                                            <input type="password" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}" required="">
-                                            <div class="user-grids">
-                                                <div class="user-left">
-                                                    <div class="single-bottom">
-                                                        <ul>
-                                                            <li>
-                                                                <input type="checkbox" id="brand1" value="">
-                                                                <label for="brand1"><span></span>Remember me?</label>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                        <form [formGroup]="paypalData">
+                                            <input type="text" formControlGroup="paypalEmail" value="name@email.com " onfocus="this.value='' ; " onblur="if (this.value=='' ) {this.value='name@email.com' ;} " required=" ">
+                                            <input type="password" formControlGroup="paypalPassword" value="PASSWORD " onfocus="this.value='' ; " onblur="if (this.value=='' ) {this.value='PASSWORD' ;} " required=" ">
+                                            <div class="user-grids ">
+                                                <div class="user-right ">
+                                                    <button [disabled]="paypalData.invalid" type="submit " onclick="login()" value="LOGIN ">Login</button>
                                                 </div>
-                                                <div class="user-right">
-                                                    <input type="submit" value="LOGIN">
-                                                </div>
-                                                <div class="clear"></div>
+                                                <div class="clear "></div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-1 " aria-labelledby="tab_item-3" *ngIf="radioValue === 'DebitCard'">
-                            <div class="payment-info">
+                        <div class="tab-1 " aria-labelledby="tab_item-3 " *ngIf="radioValue==='DebitCard' ">
+                            <div class="payment-info ">
 
-                                <h3 class="pay-title">Dedit Card Info</h3>
-                                <form>
-                                    <div class="tab-for">
+                                <h3 class="pay-title ">Dedit Card Info</h3>
+                                <form [formGroup]="debitData">
+                                    <div class="tab-for ">
                                         <h5>NAME ON CARD</h5>
-                                        <input type="text" value="">
+                                        <input formControlName="debitNameOnCard" type="text " value=" ">
                                         <h5>CARD NUMBER</h5>
-                                        <input class="pay-logo" type="text" value="0000-0000-0000-0000" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="">
+                                        <input formControlName="debitCardNumber" class="pay-logo " type="text " value="0000-0000-0000-0000 " onfocus="this.value='' ; " onblur="if (this.value=='' ) {this.value='0000-0000-0000-0000' ;} " required=" ">
                                     </div>
-                                    <div class="transaction">
-                                        <div class="tab-form-left user-form">
+                                    <div class="transaction ">
+                                        <div class="tab-form-left user-form ">
                                             <h5>EXPIRATION</h5>
                                             <ul>
                                                 <li>
-                                                    <input type="number" class="text_box" type="text" value="6" min="1" />
+                                                    <input type="number " formControlName="debitMonth" class="text_box " type="text " value="6 " min="1 " />
                                                 </li>
                                                 <li>
-                                                    <input type="number" class="text_box" type="text" value="1988" min="1" />
+                                                    <input type="number " formControlName="debitYear" class="text_box " type="text " value="1988 " min="1 " />
                                                 </li>
 
                                             </ul>
                                         </div>
-                                        <div class="tab-form-right user-form-rt">
+                                        <div class="tab-form-right user-form-rt ">
+                                            <br>
                                             <h5>CVV NUMBER</h5>
-                                            <input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="">
+                                            <input formControlName="debitCVV" type="text " value="xxxx " onfocus="this.value='' ; " onblur="if (this.value=='' ) {this.value='xxxx' ;} " required=" ">
                                         </div>
-                                        <div class="clear"></div>
+                                        <!-- <div class="clear "></div> -->
                                     </div>
-                                    <input type="submit" value="SUBMIT">
+
+                                    <input type="checkbox" [(ngModel)]="checkPaypal" [ngModelOptions]="{standalone: true}" />
+                                    <label class="label_sub">By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
+                                    <br>
+                                    <button class='btn_submit' [disabled]="debitData.invalid " onclick="debitSub()" type="submit " value="SUBMIT ">Submit</button>
                                 </form>
-                                <div class="single-bottom">
-                                    <ul>
-                                        <li>
-                                            <input type="checkbox" id="brand" value="">
-                                            <label for="brand"><span></span>By checking this box, I agree to the Terms &
-                          Conditions
-                          & Privacy Policy.</label>
-                                        </li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <body>

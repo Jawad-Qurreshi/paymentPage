@@ -52,7 +52,7 @@ export class CreditTableComponent implements OnChanges {
 
     // filter our data
     const temp = this.creditUsers.filter(function (d) {
-      return d.Email.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.email.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
     // update the rows

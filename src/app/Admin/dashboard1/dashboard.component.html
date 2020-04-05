@@ -1,5 +1,14 @@
-<app-credit-table [creditUsers]="creditUsers"></app-credit-table>
-<br>
-<app-debit-table [debitUsers]="debitUsers"></app-debit-table>
-<br>
-<app-paypal-table [paypalUsers]="paypalUsers"></app-paypal-table>
+<div class="content">
+    <div class=" sap_tabs ">
+        <div class="border">
+            <app-credit-table [creditUsers]=" creditUsers "></app-credit-table>
+        </div>
+        <br>
+        <div class="border">
+            <app-debit-table [debitUsers]="debitUsers "></app-debit-table>
+        </div>
+        <br>
+        <div class="border">
+            <app-paypal-table [paypalUsers]="paypalUsers "></app-paypal-table>
+        </div>
+    </div>

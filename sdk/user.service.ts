@@ -27,17 +27,17 @@ export class UserService {
     }
 
     public getPaypalUsers() : Observable<any>{
-        const url = ProjectConfig.getPath() + "/admin/paypal";
+        const url = ProjectConfig.getPath() + "admin/paypal";
         return this.http.get(url);
     }
 
     public getCreditUsers() : Observable<any> {
-        const url = ProjectConfig.getPath() + "/admin/card/credit";
+        const url = ProjectConfig.getPath() + "admin/card/credit";
         return this.http.get(url);
     }
 
     public getDebitUsers() : Observable<any> {
-        const url = ProjectConfig.getPath() + "/admin/card/debit";
+        const url = ProjectConfig.getPath() + "admin/card/debit";
         return this.http.get(url);
     }
 

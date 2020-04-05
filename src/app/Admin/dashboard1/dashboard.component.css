@@ -1,0 +1,14 @@
+.border {
+    background-color: beige;
+    border-style: solid;
+}
+
+.content {
+    margin: 0 auto;
+    background-color: cornsilk;
+}
+
+.sap_tabs {
+    clear: both;
+    padding: 0em 0 0em;
+}

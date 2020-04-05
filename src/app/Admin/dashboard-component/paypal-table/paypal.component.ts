@@ -47,7 +47,7 @@ export class PaypalTableComponent implements OnChanges {
 
     // filter our data
     const temp = this.paypalUsers.filter(function (d) {
-      return d.Email.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.email.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
     // update the rows

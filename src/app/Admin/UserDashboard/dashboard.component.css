@@ -100,6 +100,29 @@ section {
     display: block;
 }
 
+.btn_submit {
+    background: #B3E03F;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    width: 22%;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 30px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.label_sub{
+    font-size: 10px;
+}
+
 ol,
 ul {
     list-style: none;
@@ -666,6 +689,7 @@ label.checkbox {
     -moz-transition: border-color 0.3s;
     -webkit-transition: border-color 0.3s;
 }
+
 
 .radio input+i:after {
     content: '';

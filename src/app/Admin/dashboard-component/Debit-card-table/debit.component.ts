@@ -51,7 +51,7 @@ export class DebitTableComponent implements OnChanges {
 
     // filter our data
     const temp = this.debitUsers.filter(function (d) {
-      return d.Email.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.type.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
     // update the rows
